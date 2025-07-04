@@ -1,0 +1,9 @@
+streamlit
+PyMuPDF
+requests
+python-dotenv
+langchain==0.1.14
+pytest
+fastapi
+openpyxl
+logger
