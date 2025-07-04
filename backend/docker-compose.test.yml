@@ -1,0 +1,13 @@
+services:
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: batch_processing_context_aware_rag_chatbot
+    env_file:
+      - .env
+    # If you want to mount local code (optional, for live dev)
+    volumes:
+     - .:/app
+    # command overrides the default CMD if needed
+    # command: ["python", "test.py"]

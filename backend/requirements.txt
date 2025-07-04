@@ -1,0 +1,35 @@
+# Core Framework
+flask==2.3.3
+flask_cors==4.0.0
+fastapi==0.100.0  # pinned latest stable
+
+# PDF Parsing
+langchain==0.1.14
+PyMuPDF==1.22.5
+PyPDF2==3.0.1
+
+# Text Preprocessing
+nltk==3.8.1
+spacy==3.7.2
+pandas
+
+# NLP + LLM APIs
+transformers==4.41.1
+torch==2.3.0
+requests==2.31.0
+sentence-transformers==2.7.0
+
+# Utility
+python-dotenv==1.0.1
+openpyxl==3.1.2  # for reading Excel files in pandas
+
+# Async / Streaming (optional)
+aiohttp==3.9.5
+
+# Logging
+logger==1.4
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-mock==3.10.0

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RAG Chatbot</title>
+</head>
+<body>
+  <h1>RAG Chatbot</h1>
+
+  <!-- Upload PDF -->
+  <input type="file" id="pdfFile" />
+  <button onclick="uploadPDF()">Upload PDF</button>
+  <p id="uploadStatus"></p>
+
+  <hr />
+
+  <!-- Ask a Question -->
+  <textarea id="question" rows="4" cols="60" placeholder="Ask a question about the uploaded PDF..."></textarea><br>
+  <button onclick="askQuestion()">Ask</button>
+
+  <h2>Answer:</h2>
+  <pre id="answerArea"></pre>
+
+  <script>
+    const BASE_URL = "http://localhost:5000/api"; // Adjust if different
+
+    function uploadPDF() {
+      const fileInput = document.getElementById("pdfFile");
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append("file", file);
+
+      fetch(`${BASE_URL}/upload`, {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            document.getElementById("uploadStatus").textContent = `❌ Error: ${data.error}`;
+          } else {
+            document.getElementById("uploadStatus").textContent = `✅ ${data.message} (${data.total_chunks} chunks)`;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("uploadStatus").textContent = "❌ Upload failed.";
+        });
+    }
+
+    function askQuestion() {
+      const question = document.getElementById("question").value;
+
+      fetch(`${BASE_URL}/ask`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            document.getElementById("answerArea").textContent = `❌ ${data.error}`;
+          } else {
+            document.getElementById("answerArea").textContent = `Q: ${data.question}\n\nA: ${data.answer}`;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("answerArea").textContent = "❌ Question failed.";
+        });
+    }
+  </script>
+</body>
+</html>

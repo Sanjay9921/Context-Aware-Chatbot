@@ -1,0 +1,28 @@
+services:
+  backend:
+    container_name: context_aware_backend
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../backend/.env
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ../backend:/app
+    restart: unless-stopped
+
+  frontend:
+    container_name: context_aware_frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - ../frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
