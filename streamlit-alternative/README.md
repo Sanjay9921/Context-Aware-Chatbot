@@ -6,7 +6,7 @@ An interactive chatbot that allows users to upload PDFs and ask natural language
 Deployable on Streamlit Cloud, this tool is perfect for students, researchers, and professionals who want a lightweight document Q&A system.
 
 ## Streamlit App Link to test
-Please use this [link](https://context-aware-llm-chatbot-6sqjmfgfyr3vsfixpmwghs.streamlit.app/) to test my app :)
+Please use this [link](https://kunjibettu-context-aware-chatbot.streamlit.app/) to test my app :)
 
 # 2. Features
 * Upload and process smaller-medium sized (<20 pages) PDF file

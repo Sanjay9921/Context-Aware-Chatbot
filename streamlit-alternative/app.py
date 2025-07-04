@@ -3,7 +3,7 @@ import fitz
 from modules.pdf_parser import extract_text_from_pdf
 from modules.text_preprocessor import preprocess_text
 from modules.qa_engine import generate_answer
-from config.settings import  MODEL_NAME_1, MODEL_NAME_2
+from config.settings import  MODEL_NAME_1
 
 # Streamlit page setup
 st.set_page_config(page_title="Context-Aware PDF Chatbot", layout="wide")
